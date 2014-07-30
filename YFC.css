@@ -1,0 +1,113 @@
+body {background-color: #000066;}
+
+.button {
+	float: right;
+}
+
+#demo {
+	float:right;
+}
+
+#heading {
+	position:relative;
+	left:260px;
+	top: -75px;
+	color: silver;		
+	}
+
+div.menuitem1 {
+	text-align: center; 
+	vertical-align: text-bottom;
+	background-image:url('http://doublefeatureshow.com/images/directors/alfred-hitchcock.jpg'); 
+	background-size: cover;
+	background-color:00008B; 
+	padding:25px;
+	border:5px dotted #000000; 
+	font:20px "Showcard Gothic", "Lucida Console", "Courier New";
+	color: #C0C0C0;
+	width:200px;
+
+}
+
+div.menuitem2 {
+	text-align:center; 
+	background-image:url('http://static.comicvine.com/uploads/original/7/79836/1437680-luke_skywalker1.jpg'); 
+	background-size: cover;
+	background-color:00008B; 
+	padding:25px;
+	border:5px dotted #000000; 
+	font:20px "Showcard Gothic","Lucida Console", "Courier New";
+	color: gold;
+	width:200px;
+
+}
+
+div.menuitem3 {
+	text-align:center; 
+	background-image:url('http://www.greatamericanthings.net/wp-content/uploads/2011/11/bulb-by-mynewslinx.blogspotdotcom.jpg'); 
+	background-size: cover;
+	background-color:00008B; 
+	padding:25px;
+	border:5px dotted #000000; 
+	font:20px "Showcard Gothic","Lucida Console", "Courier New";
+	color: #FF0000;
+	width:200px;
+
+}
+
+div.menuitem4 {
+	text-align:center; 
+	background-image:url('http://budapestfilmacademy.com/en/wp-content/uploads/2013/04/CinematographyStudio_Medium.jpg'); 
+	background-size: cover;
+	background-color:00008B; 
+	padding:25px;
+	border:5px dotted #000000; 
+	font:20px "Showcard Gothic","Lucida Console", "Courier New";
+	color: 	#0000FF;
+	width:200px;
+
+}
+
+
+div.menuitem5 {
+	text-align:center;  
+	background-color:00008B; 
+	padding:25px;
+	border:5px dotted #000000; 
+	font:20px "Showcard Gothic","Lucida Console", "Courier New";
+	color: 	white;
+	width:200px;
+
+}
+
+h2, h4 {
+	color: silver;
+	font:Courier;
+	font: 10px;
+}
+
+p {
+
+	color: silver;
+	font: Courier;
+	font: 8px;
+}
+
+
+#mainMenu {
+	float: left;
+	border-right: 1px solid white
+}
+
+
+#announcements {
+	float:right;
+	border-left: 1px solid white;
+	padding-left: 15px;
+}
+
+#News {
+	padding-left: 275px;
+	
+}
+
