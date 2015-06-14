@@ -4,11 +4,12 @@
 	<meta charset="UTF-8">
 	<title>David McPeek's awesome landing page</title>
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="styles.scss"> 
 
 </head>
 <body>
-	<h1 id="title" onclick="changeColor(this)">David McPeek: ultimate badass</h1>
+	<h1 id="title" class="ui-draggable" onclick="changeColor(this)" draggable="true">David McPeek: ultimate badass</h1>
 
 
 	<a href="portfolio.html">Past work</a>
@@ -25,13 +26,18 @@
 
 	</div>
 
-	<div class="testbox" draggable="true"></div>
+	<div class="testbox ui-draggable" draggable="true"></div>
 
 	<button type="submit" class="btn btn-danger">Videos</button>
 	<button type="submit" class="btn btn-danger">Blog</button>
 
 
 	<script src="scripts.js"></script>
+
+	<script>
+		$(".ui-draggable").draggable({appendTo: "body"});
+
+	</script>
 
 
 	
