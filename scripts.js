@@ -8,22 +8,35 @@ function duplicateElement(object)
 	document.body.innerHTML += object.innerHTML;
 }
 
-clicked = false;
-
-$(".testbox").on("click", function() {
-
-	// how do I delay this next function from happening until the next click? Do I need to stop propagation or something?
-	clicked = true;
-
-
-});
-
-if (clicked == true) 
-{
-	$("body").on("click", function() {
-		
-			$(".testbox").css({"left": event.pageX - 40, "top": event.pageY -40});
-			clicked = false;	
-
-	});
+function changePosition(event) {
+	$(".testbox").css({"left": event.pageX - 40, "top": event.pageY -40});
 }
+
+
+$(".testbox").draggable({appendTo: "body"});
+
+
+// $(".testbox").on("click", function(event) {
+
+// 	// how do I delay this next function from happening until the next click? Do I need to stop propagation or something?
+// 	// $(".testbox").css({"left": event.pageX - 40, "top": event.pageY -40});
+
+// 	$("body").bind("click");
+
+
+// 	$("body").on("click", function() {
+		
+// 			$(".testbox").css({"left": event.pageX - 40, "top": event.pageY -40});
+// 			clicked = false;	
+
+// 	});
+
+	
+
+
+
+// });
+
+
+
+	
