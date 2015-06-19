@@ -5,5 +5,24 @@
 	background-color: red;
 	position: absolute;
 	left: 10em;
+}
 
+#longbeak
+{
+	width: 200px;
+	height: 200px;
+	position: relative;
+	left: 90%;
+	top: 0em;
+	overflow: hidden;
+
+}
+
+body 
+{
+	background: url("img/clouds.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
