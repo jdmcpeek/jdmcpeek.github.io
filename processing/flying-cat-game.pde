@@ -7,7 +7,7 @@ import ddf.minim.effects.*;
 
 // TODO
 // 4. add clouds/scenery
-// 5. other characters? 
+// 5. other characters?
 // (done) 1. background and character image imports
 // (done) 2. how will acceleration and movement work?
 // 3. text imports
@@ -27,7 +27,7 @@ import ddf.minim.effects.*;
 
 // what if I had multiple levels of this game and they all did different things?
 // 1. simple character enemies that shoot at the cat's current position, gets progressively harder and harder.
-// 2. battle game in which you play with your friend at a computer or real-time over a network. 
+// 2. battle game in which you play with your friend at a computer or real-time over a network.
 
 
 int circleX = width/2;
@@ -36,7 +36,7 @@ int circleY = height/2;
 Character nyanCat;
 
 import java.util.Comparator;
-import java.util.LinkedList; 
+import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Iterator;
 import java.util.Random;
@@ -48,7 +48,7 @@ import java.util.Random;
 boolean left = false;
 boolean right = false;
 boolean up = false;
-boolean down = false;  
+boolean down = false;
 
 Environment game;
 
@@ -61,20 +61,20 @@ Random randomGenerator;
 
 ArrayList<String> laserBlasts = new ArrayList();
 ArrayList<String> missileLaunches = new ArrayList();
-ArrayList<String> explosions = new ArrayList(); 
+ArrayList<String> explosions = new ArrayList();
 
 void setup() {
   size(1500, 900);
-  game = new Environment(); 
-  
+  game = new Environment();
+
   randomGenerator = new Random();
-  
+
   nyanCat = new Character(width/2, height/2, width/10, width/10);
-  img = loadImage("Nyancat.png"); 
+  img = loadImage("Nyancat.png");
   missile = loadImage("missile.png");
-  
+
   minim = new Minim(this);
-  
+
   laserBlasts.add("laserBlast.wav");
   laserBlasts.add("laserBlast2.wav");
   laserBlasts.add("laserBlastSmall.wav");
@@ -82,7 +82,7 @@ void setup() {
   missileLaunches.add("missileLaunchBig.mp3");
   explosions.add("explosion.wav");
   explosions.add("explosion2.wav");
-  
+
   frameRate(60);
 }
 
@@ -166,10 +166,10 @@ class Character extends AcceleratingObject {
     Projectile projectile = new Projectile(location.x, location.y, 50, d, 50, 10);
 
     switch (key) {
-    case 'f': 
+    case 'f':
       projectile = new LaserBeam(location.x, location.y, 50, d, 50, 10, new Color(255, 0, 0));
       break;
-    case 'd': 
+    case 'd':
       projectile = new Missile(location.x, location.y, 20, d, 100, 70);
       break;
     case 's':
@@ -192,7 +192,7 @@ class AcceleratingObject {
 
   PVector location = new PVector(640, 360);
   PVector velocity = new PVector(0, 0);
-  float maxSpeed = 20; 
+  float maxSpeed = 20;
   float accelerationRateX = this.calculateAccelerationRate(10f, 1280);
   float accelerationRateY = this.calculateAccelerationRate(8f, 720);
   float frictionX = accelerationRateX / 2;
@@ -200,7 +200,7 @@ class AcceleratingObject {
   PVector size = new PVector(0, 0);
 
   int directionX = 1;
-  int directionY = 1; 
+  int directionY = 1;
 
   AcceleratingObject(int x, int y, int sizeX, int sizeY) {
     location.x = x;
@@ -210,7 +210,7 @@ class AcceleratingObject {
   }
 
 
-  // travelTime = time in seconds it takes to move across the screen 
+  // travelTime = time in seconds it takes to move across the screen
   // distance = width or height
   float calculateAccelerationRate(float travelTime, float distance) {
     return ((float) (2 * distance)) / sq(travelTime * frameRate);
@@ -233,7 +233,7 @@ class AcceleratingObject {
     directionX = velocity.x > 0 ? 1 : -1;
   }
 
-  // not sure what I'm doing here... I'm confusing a bunch of moving parts. I need to find a universal way of doing things and stick to it. 
+  // not sure what I'm doing here... I'm confusing a bunch of moving parts. I need to find a universal way of doing things and stick to it.
   private void accelerate() {  // or `updateSpeed`
     if (up) velocity.y -= accelerationRateY;
     if (down) velocity.y += accelerationRateY;
@@ -258,7 +258,7 @@ class Explosion {
 
   Explosion(float x, float y, float maxRadius, Color rgb) {
     location = new PVector(x, y);
-    this.maxRadius = maxRadius; 
+    this.maxRadius = maxRadius;
     this.rgb = rgb;
   }
 
@@ -268,8 +268,8 @@ class Explosion {
     ellipse(location.x, location.y, radius, radius);
     fill(255, 215, 0);
     ellipse(location.x, location.y, radius/2, radius/2);
-    if (radius > maxRadius) expand = false;  
-    if (expand) radius++; 
+    if (radius > maxRadius) expand = false;
+    if (expand) radius++;
     else radius = radius - 2;
     if (radius < 1) dissipate = true;  // remove explosion
   }
@@ -278,7 +278,7 @@ class Explosion {
 // how am I going to emulate explosions? What should the object design be?
 class Projectile {
   PVector location;
-  int speed;  
+  int speed;
   int direction;
   PVector dimensions;
 
@@ -350,7 +350,7 @@ class Missile extends Projectile {
     }
 
     if (random(0, 10) < 5) {
-      Explosion fireTrail = new Explosion(location.x, location.y + dimensions.y/2, 25, new Color(255, 0, 0)); 
+      Explosion fireTrail = new Explosion(location.x, location.y + dimensions.y/2, 25, new Color(255, 0, 0));
       game.explosions.add(fireTrail);
     }
 
@@ -402,15 +402,15 @@ void playSound(String sound) {
 void keyPressed() {
   if (key == CODED) {
     if (keyCode == UP && up == false) up = true;
-    if (keyCode == DOWN && down == false) down = true; 
-    if (keyCode == RIGHT && right == false) right = true; 
+    if (keyCode == DOWN && down == false) down = true;
+    if (keyCode == RIGHT && right == false) right = true;
     if (keyCode == LEFT && left == false) left = true;
   }
 
   if (key == 'f' || key == 'd' || key == 's' || key == 'a') {
     nyanCat.shootLasers(key);
     switch(key) {
-    case 'f': 
+    case 'f':
       playSound(laserBlasts.get(0));
       break;
     case 'd':
@@ -422,8 +422,8 @@ void keyPressed() {
     case 'a':
       playSound(laserBlasts.get(1));
       break;
-      
-    
+
+
     }
   }
 }
@@ -441,10 +441,9 @@ void keyReleased() {
 void draw() {
   background(216, 223, 255);
 
-  nyanCat.move();  
+  nyanCat.move();
   game.drawEverything();
-  
-  
-  
-}
 
+
+
+}
