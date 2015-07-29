@@ -3,42 +3,39 @@
 <head>
 	<meta charset="UTF-8">
 	<title>David McPeek's awesome landing page</title>
-	<script src="bower_components/jquery/dist/jquery.min.js"></script>
-	<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="styles.scss"> 
+	<!-- // <script src="bower_components/jquery/dist/jquery.min.js"></script> -->
+	<!-- // <script src="bower_components/jquery-ui/jquery-ui.min.js"></script> -->
+	<script src="bower_components/Processing.js/processing.min.js"></script>
+
+	</script>
+	<link rel="stylesheet" type="text/css" href="styles.css">
 
 </head>
 <body>
-	<h1 id="title" class="ui-draggable" onclick="changeColor(this)" draggable="true">David McPeek: ultimate badass</h1>
 
-	<a href="portfolio.html">Past work</a>
-	<a href="resume.pdf">Resume</a>
-	<a href="videos.html">Videos</a>
-	<a href="blog.html">Blog</a>
+	<div id="canvas-wrap">
+		<canvas data-processing-sources="cellCulture.pde"></canvas>
 
-	<button type="submit" class="btn btn-danger" method="get" action="portfolio.html">Past work</button>
-	<button type="submit" class="btn btn-danger" method="get" action="resume.pdf">Resume</button>
-
-	<div class="david">
-		<!-- img src should be alternating somehow -->
-		<!-- <img src="david.jpg" alt="love and singing">  -->
+		<div id="main">
+			<h1 id="title" class="ui-draggable" onclick="changeColor(this)" draggable="true">David McPeek</h1>
+			<a href="portfolio.html" class="link">Past work</a>
+			<a href="resume.pdf" class="link">Resume</a>
+			<a href="videos.html" class="link">Videos</a>
+			<a href="https://davidmcpeek.wordpress.com/" class="link">Blog</a>
+		</div>
 
 	</div>
 
-	<img src="img/longbeak.png" id="longbeak">
 
-	<div class="testbox ui-draggable" draggable="true"></div>
 
-	<button type="submit" class="btn btn-danger">Videos</button>
-	<button type="submit" class="btn btn-danger">Blog</button>
-
+<!--
 	<script src="js/scripts.js"></script>
 	<script src="js/sine_wave.js"></script>
-	<script src="js/jquery.path.js"></script>
+	<script src="js/jquery.path.js"></script> -->
 
 
 
 
-	
+
 </body>
 </html>
