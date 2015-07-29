@@ -6,9 +6,8 @@
 
 
 void setup() {
-  size(1280, 720);
+  size(window.innerWidth, window.innerHeight);
   frameRate(32);
-  frame.setResizable(true);
   restart();
 }
 
@@ -17,12 +16,12 @@ int num_gen;
 int population;
 int growth = 2;  // the base with which we'll be growing
 float scaler = 1;
-boolean update = false; 
+boolean update = false;
 float theta = 1;  // the ever-changing value by which cells bob
 
 
 
-Graph graph = new Graph(); 
+Graph graph = new Graph();
 
 Color skyBlue = new Color(102, 190, 242);  // commonly used color for background and patching
 
@@ -92,7 +91,7 @@ void nextGen() {
 
 class Graph {
   void drawGraph() {
-    pushMatrix(); 
+    pushMatrix();
     skyBlue.fillColor();
     rect(0, 0, 120, 120);
     stroke(255);  // white axes
@@ -110,16 +109,16 @@ class Graph {
 
     stroke(255, 0, 0);
     for (int i = 1; i < num_gen + 1; i++) {
-      line(10 + ((i - 1) * (97.5/13)), 
-      110 - (pow(growth, i-1) * (97.5/4096)), 
-      10 + (i * (97.5/13)), 
+      line(10 + ((i - 1) * (97.5/13)),
+      110 - (pow(growth, i-1) * (97.5/4096)),
+      10 + (i * (97.5/13)),
       110 -  (pow(growth, i) * (97.5/4096)));
     }
 
     fill(0);
     text(num_gen + " gens", 74, 91, 50, 50);
     text("population", 21, 4, 75, 50);
-    text(growth + "^" + num_gen + " = " + pow(growth, num_gen), 21, 20, 55, 50); 
+    text(growth + "^" + num_gen + " = " + pow(growth, num_gen), 21, 20, 55, 50);
 
     popMatrix();
   }
@@ -128,9 +127,9 @@ class Graph {
 
 
 void mouseClicked() {
-  if (mouseButton == LEFT) {    
-    nextGen();  
-    scaler -= 0.05; 
+  if (mouseButton == LEFT) {
+    nextGen();
+    scaler -= 0.05;
     update = true;
   }
   if (mouseButton == RIGHT) {
@@ -143,10 +142,10 @@ void draw() {
     skyBlue.backgroundColor();
     for (int i = 0; i < cells.size(); i++) {
       fill(cells.get(i).cellColor.red, cells.get(i).cellColor.green, cells.get(i).cellColor.blue);
-      cells.get(i).shrink(); 
-      ellipse(cells.get(i).position.x, 
-              cells.get(i).position.y, 
-              cells.get(i).size, 
+      cells.get(i).shrink();
+      ellipse(cells.get(i).position.x,
+              cells.get(i).position.y,
+              cells.get(i).size,
               cells.get(i).size);
     }
 
@@ -161,11 +160,11 @@ void draw() {
     if (cells.get(i).size < 0.5) {
       cells.remove(i);
     } else {
-      ellipse(cells.get(i).position.x + sin(cells.get(i).bob / 25) * 15, 
-              cells.get(i).position.y + cos(cells.get(i).bob / 25) * 5, 
-              cells.get(i).size, 
+      ellipse(cells.get(i).position.x + sin(cells.get(i).bob / 25) * 15,
+              cells.get(i).position.y + cos(cells.get(i).bob / 25) * 5,
+              cells.get(i).size,
               cells.get(i).size);
-              
+
         if (i % 2 == 0) {
           cells.get(i).bob += random(0.1, 2);
         } else {
@@ -173,9 +172,9 @@ void draw() {
         }
     }
 
-     
 
-      
+
+
   }
 
   pushMatrix();
@@ -185,4 +184,3 @@ void draw() {
   }
   popMatrix();
 };
-
