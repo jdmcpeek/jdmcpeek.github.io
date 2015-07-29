@@ -128,19 +128,19 @@ void mouseDragged() {
 };
 
 String scaledX(float x) {
-  return String.valueOf((float) round(ScaleX(x/2-200) * 100)/100);
+  return str((float) round(ScaleX(x/2-200) * 100)/100);
 }
 
 String scaledNormalDist(float x) {
-  return String.valueOf((float) round(normal_dist(ScaleX(dx/2 - 200), variance, mean) * 100)/100);
+  return str((float) round(normal_dist(ScaleX(dx/2 - 200), variance, mean) * 100)/100);
 }
 
 String sdPrint(int i) {
-  return String.valueOf((float) round(sd * i * (num_deviations/2) * 100) / 100);
+  return str((float) round(sd * i * (num_deviations/2) * 100) / 100);
 }
 
 String sdPrint2() {
-  return String.valueOf((float) round(sd * 100) / 100);
+  return str((float) round(sd * 100) / 100);
 }
 
 
@@ -165,10 +165,10 @@ void draw() {
     text("0.5", 55, axis_x - 94, 50, 23);  // y-topright
     text("0", 67, 340, 50, 30);  // y-bottomleft
     text("1.0", 58, 250, 50, 38);  // y-topleft
-    String t = sdPrint(-1);
+    t = sdPrint(-1);
     text(t, 99, axis_x + 219, 50, 30); // x-bottomleft
     text("0", 194, axis_x + 217, 50, 30); // origin-bottomleft
-    String t = sdPrint(1);
+    t = sdPrint(1);
     text(t, 290, axis_x + 217, 50, 30); // x-bottomright
 
     // label axes
