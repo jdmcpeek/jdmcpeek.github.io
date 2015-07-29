@@ -33,7 +33,6 @@ ArrayList<float[]> cur = createCurve();
 void setup() {
   size(900, 900);
   frameRate(30);
-  frame.setResizable(true);
 }
 
 float ScaleX(float i) {

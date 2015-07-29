@@ -64,7 +64,7 @@ ArrayList<String> missileLaunches = new ArrayList();
 ArrayList<String> explosions = new ArrayList();
 
 void setup() {
-  size(1500, 900);
+  size(window.innerWidth, window.innerHeight);
   game = new Environment();
 
   randomGenerator = new Random();
@@ -443,7 +443,5 @@ void draw() {
 
   nyanCat.move();
   game.drawEverything();
-
-
 
 }
