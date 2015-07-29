@@ -76,9 +76,6 @@ void UpdateDist() {
     update = false;   // reset `update` back to false when called
 };
 
-// float quadratic = function(x) {
-//   return (pow(x, 2) + 0.5*x);
-// };
 
 
 float AreaTrapezoid(float s1, float s2) {
@@ -130,6 +127,21 @@ void mouseDragged() {
     }
 };
 
+String scaledX(float x) {
+  return String.valueOf((float) round(ScaleX(x/2-200) * 100)/100);
+}
+
+String scaledNormalDist(float x) {
+  return String.valueOf((float) round(normal_dist(ScaleX(dx/2 - 200), variance, mean) * 100)/100);
+}
+
+String sdPrint(int i) {
+  return String.valueOf((float) round(sd * i * (num_deviations/2) * 100) / 100);
+}
+
+String sdPrint2() {
+  return String.valueOf((float) round(sd * 100) / 100);
+}
 
 
 
@@ -144,16 +156,16 @@ void draw() {
     line(axis_y - 120, 250, axis_y - 120, axis_x + 210);  // y-axis bottom
     line(80, axis_x + 211, 320, axis_x + 211);  // x-axis bottom
     textSize(13);
-    text(String.valueOf((float) round(sd * -(num_deviations/2) * 100) / 100), 90, axis_x + 5, 50, 30); // x-topleft
+    text(sdPrint(-1), 90, axis_x + 5, 50, 30); // x-topleft
     text("0", 194, axis_x + 5, 50, 30); // origin-topleft
-    text(String.valueOf((float) round(sd * (num_deviations/2) * 100) / 100), 290, axis_x + 5, 50, 30); // x-topright
+    text(sdPrint(1), 290, axis_x + 5, 50, 30); // x-topright
     text("0.0", 55, axis_x - 11, 50, 30);  // y-topleft
     text("0.5", 55, axis_x - 94, 50, 23);  // y-topright
     text("0", 67, 340, 50, 30);  // y-bottomleft
     text("1.0", 58, 250, 50, 38);  // y-topleft
-    text(String.valueOf((float) round(sd * -(num_deviations/2) * 100) / 100), 99, axis_x + 219, 50, 30); // x-bottomleft
+    text(sdPrint(-1), 99, axis_x + 219, 50, 30); // x-bottomleft
     text("0", 194, axis_x + 217, 50, 30); // origin-bottomleft
-    text(String.valueOf((float) round(sd * (num_deviations/2) * 100) / 100), 290, axis_x + 217, 50, 30); // x-bottomright
+    text(sdPrint(1), 290, axis_x + 217, 50, 30); // x-bottomright
 
     // label axes
     textSize(10);
@@ -172,15 +184,15 @@ void draw() {
     rect(50, 188, 300, 36, 30);
     rect(281, 10, 107, 70, 30);
     fill(0);
-    text("standard deviation = " + String.valueOf((float) round(sd * 100) / 100), 65, 200, 190, 17);
+    text("standard deviation = " + sdPrint2(), 65, 200, 190, 17);
 
     // the lever to change the standard deviation
     line(235, 206, 330, 206);
     rect(lever/2, 196, 5, 20,20);
 
     // more stats in the topright box
-    text("x = " + String.valueOf((float) round(ScaleX(dx/2-200) * 100)/100), 308, 24, 168, 20);
-    text("density = " + String.valueOf((float) round(normal_dist(ScaleX(dx/2 - 200), variance, mean) * 100)/100), 291, 50, 100, 30);
+    text("x = " + scaledX(dx), 308, 24, 168, 20);
+    text("density = " + scaledNormalDist(dx), 291, 50, 100, 30);
 
     // update distribution function and curve if needed
     if (update) {
@@ -223,11 +235,11 @@ void draw() {
     // print current density value following the yellow integral bar
     if (dx/2 <= 200) {
         // keep on the left
-        text(String.valueOf((float) round(normal_dist(ScaleX(dx/2 - 200), variance, mean) * 100)/100), dx/2 - 24,
+        text(scaledNormalDist(dx), dx/2 - 24,
              axis_x - 20 - ScaleY(normal_dist(ScaleX(dx/2 - 200), variance, mean)), 109, 75);
     } else {
         // keep on the right
-         text(String.valueOf((float) round(normal_dist(ScaleX(dx/2 - 200), variance, mean) * 100)/100), dx/2,
+         text(scaledNormalDist(dx), dx/2,
              axis_x - 20 - ScaleY(normal_dist(ScaleX(dx/2 - 200), variance, mean)), 109, 75);
     }
 
