@@ -156,16 +156,20 @@ void draw() {
     line(axis_y - 120, 250, axis_y - 120, axis_x + 210);  // y-axis bottom
     line(80, axis_x + 211, 320, axis_x + 211);  // x-axis bottom
     textSize(13);
-    text(sdPrint(-1), 90, axis_x + 5, 50, 30); // x-topleft
+    String t = sdPrint(-1);
+    text(t, 90, axis_x + 5, 50, 30); // x-topleft
     text("0", 194, axis_x + 5, 50, 30); // origin-topleft
-    text(sdPrint(1), 290, axis_x + 5, 50, 30); // x-topright
+    t = sdPrint(1);
+    text(t, 290, axis_x + 5, 50, 30); // x-topright
     text("0.0", 55, axis_x - 11, 50, 30);  // y-topleft
     text("0.5", 55, axis_x - 94, 50, 23);  // y-topright
     text("0", 67, 340, 50, 30);  // y-bottomleft
     text("1.0", 58, 250, 50, 38);  // y-topleft
-    text(sdPrint(-1), 99, axis_x + 219, 50, 30); // x-bottomleft
+    String t = sdPrint(-1);
+    text(t, 99, axis_x + 219, 50, 30); // x-bottomleft
     text("0", 194, axis_x + 217, 50, 30); // origin-bottomleft
-    text(sdPrint(1), 290, axis_x + 217, 50, 30); // x-bottomright
+    String t = sdPrint(1);
+    text(t, 290, axis_x + 217, 50, 30); // x-bottomright
 
     // label axes
     textSize(10);
@@ -235,11 +239,13 @@ void draw() {
     // print current density value following the yellow integral bar
     if (dx/2 <= 200) {
         // keep on the left
-        text(scaledNormalDist(dx), dx/2 - 24,
+        t = scaledNormalDist(dx);
+        text(t, dx/2 - 24,
              axis_x - 20 - ScaleY(normal_dist(ScaleX(dx/2 - 200), variance, mean)), 109, 75);
     } else {
+        t = scaledNormalDist(dx);
         // keep on the right
-         text(scaledNormalDist(dx), dx/2,
+         text(t, dx/2,
              axis_x - 20 - ScaleY(normal_dist(ScaleX(dx/2 - 200), variance, mean)), 109, 75);
     }
 
